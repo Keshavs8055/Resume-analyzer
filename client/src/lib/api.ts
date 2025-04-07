@@ -5,6 +5,7 @@ export const FeedbackResume = async (
 ): Promise<{ analysis?: string; error?: string }> => {
   const formData = new FormData();
   formData.append("resume", file);
+  console.log("Hitting API:", `${rootApi}/api/feedback`);
 
   try {
     const res = await fetch(`${rootApi}/api/feedback`, {
