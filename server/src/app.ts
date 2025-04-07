@@ -21,6 +21,13 @@ if (!process.env.GOOGLE_API_KEY || !process.env.CLIENT_URL) {
   console.warn("⚠️ Missing essential environment variables.");
 }
 
+app.use("/test", (req, res) => {
+  res.status(200).json({
+    status: "working",
+    message: "Hello World!",
+  });
+});
+
 // Middleware
 app.use(
   cors({

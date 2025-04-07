@@ -14,7 +14,7 @@ export default function Home() {
   const [error, setError] = useState("");
   const router = useRouter();
   const { setAnalysis } = useResume();
-
+  console.log("API URL: ", process.env.NEXT_PUBLIC_API_URL);
   return (
     <main className="py-10 bg-gradient-to-b from-indigo-50 to-white flex flex-col items-center justify-center px-4">
       <h1 className="text-4xl font-bold text-indigo-800 mb-2">
