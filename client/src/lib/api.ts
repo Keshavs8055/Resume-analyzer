@@ -1,3 +1,5 @@
+export const rootApi = process.env.NEXT_PUBLIC_API_URL;
+
 export const FeedbackResume = async (
   file: File
 ): Promise<{ analysis?: string; error?: string }> => {
@@ -5,7 +7,7 @@ export const FeedbackResume = async (
   formData.append("resume", file);
 
   try {
-    const res = await fetch("http://localhost:5000/api/feedback", {
+    const res = await fetch(`${rootApi}/api/feedback`, {
       method: "POST",
       body: formData,
     });
@@ -32,7 +34,7 @@ export async function analyzeResume(file: File) {
 
   localStorage.setItem("sessionId", sessionId);
   try {
-    const res = await fetch("http://localhost:5000/api/analyze", {
+    const res = await fetch(`${rootApi}/api/analyze`, {
       method: "POST",
       headers: {
         "x-session-id": sessionId,
@@ -61,7 +63,7 @@ export const chatWithResume = async (message: string) => {
     headers["x-session-id"] = sessionId;
   }
 
-  const res = await fetch("http://localhost:5000/api/chat", {
+  const res = await fetch(`${rootApi}/api/chat`, {
     method: "POST",
     headers,
     body: JSON.stringify({ message }),
