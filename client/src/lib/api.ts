@@ -1,4 +1,6 @@
-export const rootApi = (process.env.NEXT_PUBLIC_API_URL || "").trim();
+// export const rootApi = (process.env.NEXT_PUBLIC_API_URL || "").trim();
+const rawApi = process.env.NEXT_PUBLIC_API_URL || "";
+const rootApi = rawApi.startsWith("=") ? rawApi.slice(1).trim() : rawApi.trim();
 
 export const FeedbackResume = async (
   file: File
