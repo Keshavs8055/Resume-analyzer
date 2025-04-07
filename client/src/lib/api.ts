@@ -1,11 +1,14 @@
-export const rootApi = process.env.NEXT_PUBLIC_API_URL;
+export const rootApi = (process.env.NEXT_PUBLIC_API_URL || "").trim();
 
 export const FeedbackResume = async (
   file: File
 ): Promise<{ analysis?: string; error?: string }> => {
   const formData = new FormData();
   formData.append("resume", file);
-  console.log("Hitting API:", `${rootApi}/api/feedback`);
+  console.log(
+    "Raw API URL string:",
+    JSON.stringify(process.env.NEXT_PUBLIC_API_URL)
+  );
 
   try {
     const res = await fetch(`${rootApi}/api/feedback`, {
